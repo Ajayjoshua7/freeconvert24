@@ -365,6 +365,9 @@
             transform-style: preserve-3d;
             transform: perspective(1000px) rotateY(0deg);
             position: relative;
+            display: block; /* Changed to block for better clickability */
+            text-decoration: none; /* Remove underline from link */
+            color: inherit; /* Inherit text color */
         }
         
         .tool-card::before {
@@ -384,6 +387,7 @@
             transform: perspective(1000px) rotateY(5deg) translateY(-10px);
             box-shadow: var(--shadow-hover);
             color: var(--white);
+            text-decoration: none; /* Ensure no underline on hover */
         }
         
         .tool-card:hover::before {
@@ -441,6 +445,7 @@
             font-size: 1rem;
             transition: var(--transition);
             border: 2px solid transparent;
+            pointer-events: none; /* Prevent button from intercepting clicks */
         }
         
         .tool-button:hover {
@@ -853,71 +858,71 @@
         </div>
         
         <div class="tools-grid">
-            <div class="tool-card fade-in delay-1">
+            <a href="#" class="tool-card fade-in delay-1">
                 <div class="tool-icon-container">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image Converter</h3>
                     <p>Convert between JPG, PNG, GIF, WEBP and more formats</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-2">
+            <a href="#" class="tool-card fade-in delay-2">
                 <div class="tool-icon-container">
                     <i class="fas fa-compress-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image Compressor</h3>
                     <p>Reduce image file size without losing quality</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-3">
+            <a href="#" class="tool-card fade-in delay-3">
                 <div class="tool-icon-container">
                     <i class="fas fa-expand-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image Resizer</h3>
                     <p>Resize your images to any dimension</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-4">
+            <a href="#" class="tool-card fade-in delay-4">
                 <div class="tool-icon-container">
                     <i class="fas fa-crop-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image Cropper</h3>
                     <p>Crop images to remove unwanted areas</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-5">
+            <a href="#" class="tool-card fade-in delay-5">
                 <div class="tool-icon-container">
                     <i class="fas fa-font"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image to Text (OCR)</h3>
                     <p>Extract text from images with optical character recognition</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-1">
+            <a href="#" class="tool-card fade-in delay-1">
                 <div class="tool-icon-container">
                     <i class="fas fa-sync-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Image Rotator/Flipper</h3>
                     <p>Rotate and flip images in any direction</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
     
@@ -929,71 +934,71 @@
         </div>
         
         <div class="tools-grid">
-            <div class="tool-card fade-in delay-2">
+            <a href="#" class="tool-card fade-in delay-2">
                 <div class="tool-icon-container">
                     <i class="fas fa-file-word"></i>
                 </div>
                 <div class="tool-content">
                     <h3>PDF to Word / Word to PDF</h3>
                     <p>Convert between PDF and Word documents</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-3">
+            <a href="#" class="tool-card fade-in delay-3">
                 <div class="tool-icon-container">
                     <i class="fas fa-file-archive"></i>
                 </div>
                 <div class="tool-content">
                     <h3>PDF Compressor</h3>
                     <p>Reduce PDF file size while maintaining quality</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-4">
+            <a href="#" class="tool-card fade-in delay-4">
                 <div class="tool-icon-container">
                     <i class="fas fa-copy"></i>
                 </div>
                 <div class="tool-content">
                     <h3>PDF Merger & Splitter</h3>
                     <p>Combine multiple PDFs or split pages</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-5">
+            <a href="#" class="tool-card fade-in delay-5">
                 <div class="tool-icon-container">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Document Converter</h3>
                     <p>Convert between various document formats</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-1">
+            <a href="#" class="tool-card fade-in delay-1">
                 <div class="tool-icon-container">
                     <i class="fas fa-lock"></i>
                 </div>
                 <div class="tool-content">
                     <h3>PDF Lock/Unlock</h3>
                     <p>Add or remove password protection from PDFs</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-2">
+            <a href="#" class="tool-card fade-in delay-2">
                 <div class="tool-icon-container">
                     <i class="fas fa-signature"></i>
                 </div>
                 <div class="tool-content">
                     <h3>eSign PDF</h3>
                     <p>Add digital signatures to your PDF documents</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
     
@@ -1023,71 +1028,71 @@
         </div>
         
         <div class="tools-grid">
-            <div class="tool-card fade-in delay-3">
+            <a href="#" class="tool-card fade-in delay-3">
                 <div class="tool-icon-container">
                     <i class="fas fa-square-root-alt"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Scientific Calculator</h3>
                     <p>Advanced calculator for complex calculations</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-4">
+            <a href="#" class="tool-card fade-in delay-4">
                 <div class="tool-icon-container">
                     <i class="fas fa-birthday-cake"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Age Calculator</h3>
                     <p>Calculate age from birth date to current date</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-5">
+            <a href="#" class="tool-card fade-in delay-5">
                 <div class="tool-icon-container">
                     <i class="fas fa-weight"></i>
                 </div>
                 <div class="tool-content">
                     <h3>BMI Calculator</h3>
                     <p>Calculate your Body Mass Index</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-1">
+            <a href="#" class="tool-card fade-in delay-1">
                 <div class="tool-icon-container">
                     <i class="fas fa-home"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Loan EMI Calculator</h3>
                     <p>Calculate Equated Monthly Installments for loans</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-2">
+            <a href="#" class="tool-card fade-in delay-2">
                 <div class="tool-icon-container">
                     <i class="fas fa-percentage"></i>
                 </div>
                 <div class="tool-content">
                     <h3>GST Calculator</h3>
                     <p>Calculate Goods and Services Tax amounts</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
             
-            <div class="tool-card fade-in delay-3">
+            <a href="#" class="tool-card fade-in delay-3">
                 <div class="tool-icon-container">
                     <i class="fas fa-money-bill-wave"></i>
                 </div>
                 <div class="tool-content">
                     <h3>Currency Converter</h3>
                     <p>Convert between world currencies</p>
-                    <a href="#" class="tool-button">Use Tool</a>
+                    <span class="tool-button">Use Tool</span>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
     
