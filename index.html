@@ -283,6 +283,17 @@
             transform: translateY(-50%);
             color: var(--text-light);
             font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            display: none;
+            grid-column: 1 / -1;
         }
         
         /* AdSense Banner - Top */
@@ -811,7 +822,7 @@
         <div class="search-container">
             <div class="search-bar">
                 <input type="text" placeholder="Search a tool..." id="toolSearch">
-                <i class="fas fa-search"></i>
+                <i class="fas fa-search" id="searchIcon"></i>
             </div>
         </div>
     </section>
@@ -1123,31 +1134,123 @@
                 '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
-        // Search functionality
-        const toolSearch = document.getElementById('toolSearch');
-        
-        toolSearch.addEventListener('input', () => {
-            const searchTerm = toolSearch.value.toLowerCase();
-            // Implement search functionality here
-            // This would filter the tools based on the search term
-        });
-        
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
+        // Enhanced Search functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toolSearch = document.getElementById('toolSearch');
+            const searchIcon = document.getElementById('searchIcon');
+            const toolCards = document.querySelectorAll('.tool-card');
+            const toolSections = document.querySelectorAll('.tools-section');
+            const toolsGrids = document.querySelectorAll('.tools-grid');
+            
+            // Create no results message elements
+            toolsGrids.forEach(grid => {
+                const noResultsMsg = document.createElement('div');
+                noResultsMsg.className = 'no-results';
+                noResultsMsg.textContent = 'No tools found matching your search.';
+                grid.appendChild(noResultsMsg);
+            });
+            
+            function performSearch() {
+                const searchTerm = toolSearch.value.toLowerCase().trim();
+                let anyMatches = false;
+                
+                // Reset all cards and sections first
+                toolCards.forEach(card => {
+                    card.style.display = 'none';
+                });
+                toolSections.forEach(section => {
+                    section.style.display = 'block';
+                });
+                document.querySelectorAll('.no-results').forEach(msg => {
+                    msg.style.display = 'none';
+                });
+                
+                if (searchTerm === '') {
+                    // Show all cards when search is empty
+                    toolCards.forEach(card => {
+                        card.style.display = 'block';
+                    });
+                    return;
+                }
+                
+                // Search through all cards
+                toolCards.forEach(card => {
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    const description = card.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        card.style.display = 'block';
+                        anyMatches = true;
+                    }
+                });
+                
+                // Handle sections and no results messages
+                toolSections.forEach(section => {
+                    const sectionCards = section.querySelectorAll('.tool-card');
+                    const grid = section.querySelector('.tools-grid');
+                    const noResultsMsg = grid.querySelector('.no-results');
+                    let hasVisibleTools = false;
+                    
+                    sectionCards.forEach(card => {
+                        if (card.style.display === 'block') {
+                            hasVisibleTools = true;
+                        }
+                    });
+                    
+                    if (!hasVisibleTools) {
+                        section.style.display = 'none';
+                    } else {
+                        // Check if this specific section has no visible cards
+                        const visibleCardsInSection = grid.querySelectorAll('.tool-card[style="display: block;"]');
+                        noResultsMsg.style.display = visibleCardsInSection.length === 0 ? 'block' : 'none';
+                    }
+                });
+                
+                // Scroll to results if there are matches
+                if (anyMatches) {
+                    const firstVisibleCard = document.querySelector('.tool-card[style="display: block;"]');
+                    if (firstVisibleCard) {
+                        firstVisibleCard.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                    }
+                }
+            }
+            
+            // Event listeners
+            toolSearch.addEventListener('input', performSearch);
+            searchIcon.addEventListener('click', function() {
+                if (toolSearch.value.trim() !== '') {
+                    toolSearch.value = '';
+                    performSearch();
                 }
             });
-        }, observerOptions);
-        
-        document.querySelectorAll('.tool-card').forEach(card => {
-            observer.observe(card);
+            
+            // Also trigger search when pressing Enter
+            toolSearch.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Intersection Observer for animations
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.tool-card').forEach(card => {
+                observer.observe(card);
+            });
         });
         
         // Google Analytics (replace with your tracking ID)
